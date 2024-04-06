@@ -16,8 +16,7 @@ This repository contains configurations and instructions to customize your Windo
 
 1. Install PowerShell 7. Although the configuration can work with other versions, I recommend using PowerShell 7 as it doesn't display annoying text every time you open it.
    
-2. Install Scoop by following the instructions at [scoop.sh](https://scoop.sh/). Run the following commands in your PowerShell terminal:
-    (Not tested)
+2. Run the following commands in your PowerShell terminal (Not tested):
     ```powershell
     Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser; Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression; scoop install git; scoop install fastfetch; scoop install starship
     ```
