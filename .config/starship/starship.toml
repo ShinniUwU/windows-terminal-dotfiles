@@ -2,7 +2,7 @@
 
 add_newline = false
 command_timeout = 1000
-format = """$os$username$hostname$kubernetes$directory$git_branch$git_status"""
+format = """$os$username$hostname$directory$git_branch$git_status"""
 
 # Drop ugly default prompt characters
 [character]
@@ -14,14 +14,6 @@ error_symbol = ''
 [os]
 format = '[$symbol](bold white) '   
 disabled = false
-
-[os.symbols]
-Windows = ''
-Arch = '󰣇'
-Ubuntu = ''
-Macos = '󰀵'
-
-# ---
 
 # Shows the username
 [username]
@@ -70,30 +62,11 @@ staged = '[++\($count\)](green)'
 renamed = '襁 '
 deleted = ' '
 
-# Shows kubernetes context and namespace
-[kubernetes]
-format = 'via [󱃾 $context\($namespace\)](bold purple) '
-disabled = false
-
-# ---
-
-[vagrant]
-disabled = true
-
 [docker_context]
-disabled = true
-
-[helm]
 disabled = true
 
 [python]
 disabled = true
 
 [nodejs]
-disabled = true
-
-[ruby]
-disabled = true
-
-[terraform]
 disabled = true
