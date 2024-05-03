@@ -1,72 +1,258 @@
-# ~/.config/starship.toml
-
-add_newline = false
-command_timeout = 1000
-format = """$os$username$hostname$directory$git_branch$git_status"""
-
-# Drop ugly default prompt characters
-[character]
-success_symbol = ''
-error_symbol = ''
-
-# ---
-
-[os]
-format = '[$symbol](bold white) '   
-disabled = false
-
-# Shows the username
+format = """
+[░▒▓](#5BCEFA)\
+$os\
+$username\
+[](bg:#F5A9B8 fg:#5BCEFA)\
+$directory\
+[](fg:#F5A9B8 bg:#FFFFFF)\
+$git_branch\
+$git_status\
+[](fg:#FFFFFF bg:#F5A9B8)\
+$c\
+$elixir\
+$elm\
+$golang\
+$gradle\
+$haskell\
+$java\
+$julia\
+$nodejs\
+$nim\
+$rust\
+$scala\
+[](fg:#F5A9B8 bg:#5BCEFA)\
+$docker_context\
+[](fg:#5BCEFA bg:#FFFFFF)\
+$time\
+[ ](fg:#FFFFFF)\
+"""
+ 
+# Disable the blank line at the start of the prompt
+# add_newline = false
+ 
+# You can also replace your username with a neat symbol like   or disable this
+# and use the os module below
 [username]
-style_user = 'white bold'
-style_root = 'black bold'
-format = '[$user]($style) '
-disabled = false
 show_always = true
-
-# Shows the hostname
-[hostname]
-ssh_only = false
-format = 'on [$hostname](bold yellow) '
+style_user = "fg:#000000 bg:#5BCEFA"
+style_root = "fg:#000000 bg:#5BCEFA"
+format = '[$user ]($style)'
 disabled = false
-
-# Shows current directory
+ 
+# An alternative to the username module which displays a symbol that
+# represents the current operating system
+[os]
+style = "fg:#000000 bg:#5BCEFA"
+disabled = true # Disabled by default
+ 
 [directory]
-truncation_length = 1
-truncation_symbol = '…/'
-home_symbol = '󰋜 ~'
-read_only_style = '197'
-read_only = '  '
-format = 'at [$path]($style)[$read_only]($read_only_style) '
-
-# Shows current git branch
-[git_branch]
-symbol = ' '
-format = 'via [$symbol$branch]($style)'
-# truncation_length = 4
-truncation_symbol = '…/'
-style = 'bold green'
-
-# Shows current git status
-[git_status]
-format = '[$all_status$ahead_behind]($style) '
-style = 'bold green'
-conflicted = '🏳'
-up_to_date = ''
-untracked = ' '
-ahead = '⇡${count}'
-diverged = '⇕⇡${ahead_count}⇣${behind_count}'
-behind = '⇣${count}'
-stashed = ' '
-modified = ' '
-staged = '[++\($count\)](green)'
-renamed = '襁 '
-deleted = ' '
-
+style = "fg:#000000 bg:#F5A9B8"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+ 
+# Here is how you can shorten some long paths by text replacement
+# similar to mapped_locations in Oh My Posh:
+[directory.substitutions]
+"Documents" = " "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+# Keep in mind that the order matters. For example:
+# "Important Documents" = "  "
+# will not be replaced, because "Documents" was already substituted before.
+# So either put "Important Documents" before "Documents" or use the substituted version:
+# "Important  " = "  "
+ 
+[c]
+symbol = " "
+style = "bg:#F5A9B8"
+format = '[ $symbol ($version) ]($style)'
+ 
 [docker_context]
-disabled = true
-
-[python]
-disabled = true
-
+symbol = " "
+style = "bg:#5BCEFA"
+format = '[ $symbol $context ]($style) $path'
+ 
+[elixir]
+symbol = " "
+style = "bg:#F5A9B8"
+format = '[ $symbol ($version) ]($style)'
+ 
+[elm]
+symbol = " "
+style = "bg:#F5A9B8"
+format = '[ $symbol ($version) ]($style)'
+ 
+[git_branch]
+symbol = ""
+style = "bg:#FFFFFF"
+format = '[[ $symbol $branch ](fg:#000000 bg:#FFFFFF)]($style)'
+ 
+[git_status]
+style = "bg:#FFFFFF"
+format = '[[($all_status$ahead_behind )](fg:#000000 bg:#FFFFFF)]($style)'
+ 
+[golang]
+symbol = " "
+style = "bg:#F5A9B8"
+format = '[[ $symbol ($version) ](fg:#000000 bg:#F5A9B8)]($style)'
+ 
+[gradle]
+style = "bg:#F5A9B8"
+format = '[[ $symbol ($version) ](fg:#000000 bg:#F5A9B8)]($style)'
+ 
+[haskell]
+symbol = " "
+style = "bg:#F5A9B8"
+format = '[[ $symbol ($version) ](fg:#000000 bg:#F5A9B8)]($style)'
+ 
+[java]
+symbol = " "
+style = "bg:#F5A9B8"
+format = '[[ $symbol ($version) ](fg:#000000 bg:#F5A9B8)]($style)'
+ 
+[julia]
+symbol = " "
+style = "bg:#F5A9B8"
+format = '[[ $symbol ($version) ](fg:#000000 bg:#F5A9B8)]($style)'
+ 
 [nodejs]
-disabled = true
+symbol = ""
+style = "bg:#F5A9B8"
+format = '[[ $symbol ($version) ](fg:#000000 bg:#F5A9B8)]($style)'
+ 
+[nim]
+symbol = " "
+style = "bg:#F5A9B8"
+format = '[[ $symbol ($version) ](fg:#000000 bg:#F5A9B8)]($style)'
+ 
+[rust]
+symbol = ""
+style = "bg:#F5A9B8"
+format = '[[ $symbol ($version) ](fg:#000000 bg:#F5A9B8)]($style)'
+ 
+[scala]
+symbol = " "
+style = "bg:#F5A9B8"
+format = '[[ $symbol ($version) ](fg:#000000 bg:#F5A9B8)]($style)'
+ 
+[time]
+disabled = false
+time_format = "%I:%M %p" 
+## time_format = "%R" thats for 24-h format 
+style = "bg:#FFFFFF"
+format = '[[ ♥ $time ](fg:#000000 bg:#FFFFFF)]($style)'
+
+# palette tables should be last in the config ⚓️
+[palettes.catppuccin_macchiato]
+rosewater = "#f4dbd6"
+flamingo = "#f0c6c6"
+pink = "#f5bde6"
+mauve = "#c6a0f6"
+red = "#ed8796"
+maroon = "#ee99a0"
+peach = "#f5a97f"
+yellow = "#eed49f"
+green = "#a6da95"
+teal = "#8bd5ca"
+sky = "#91d7e3"
+sapphire = "#7dc4e4"
+blue = "#8aadf4"
+lavender = "#b7bdf8"
+text = "#cad3f5"
+subtext1 = "#b8c0e0"
+subtext0 = "#a5adcb"
+overlay2 = "#939ab7"
+overlay1 = "#8087a2"
+overlay0 = "#6e738d"
+surface2 = "#5b6078"
+surface1 = "#494d64"
+surface0 = "#363a4f"
+base = "#24273a"
+mantle = "#1e2030"
+crust = "#181926"
+
+[palettes.catppuccin_frappe]
+rosewater = "#f2d5cf"
+flamingo = "#eebebe"
+pink = "#f4b8e4"
+mauve = "#ca9ee6"
+red = "#e78284"
+maroon = "#ea999c"
+peach = "#ef9f76"
+yellow = "#e5c890"
+green = "#a6d189"
+teal = "#81c8be"
+sky = "#99d1db"
+sapphire = "#85c1dc"
+blue = "#8caaee"
+lavender = "#babbf1"
+text = "#c6d0f5"
+subtext1 = "#b5bfe2"
+subtext0 = "#a5adce"
+overlay2 = "#949cbb"
+overlay1 = "#838ba7"
+overlay0 = "#737994"
+surface2 = "#626880"
+surface1 = "#51576d"
+surface0 = "#414559"
+base = "#303446"
+mantle = "#292c3c"
+crust = "#232634"
+
+[palettes.catppuccin_latte]
+rosewater = "#dc8a78"
+flamingo = "#dd7878"
+pink = "#ea76cb"
+mauve = "#8839ef"
+red = "#d20f39"
+maroon = "#e64553"
+peach = "#fe640b"
+yellow = "#df8e1d"
+green = "#40a02b"
+teal = "#179299"
+sky = "#04a5e5"
+sapphire = "#209fb5"
+blue = "#1e66f5"
+lavender = "#7287fd"
+text = "#4c4f69"
+subtext1 = "#5c5f77"
+subtext0 = "#6c6f85"
+overlay2 = "#7c7f93"
+overlay1 = "#8c8fa1"
+overlay0 = "#9ca0b0"
+surface2 = "#acb0be"
+surface1 = "#bcc0cc"
+surface0 = "#ccd0da"
+base = "#eff1f5"
+mantle = "#e6e9ef"
+crust = "#dce0e8"
+
+[palettes.catppuccin_mocha]
+rosewater = "#f5e0dc"
+flamingo = "#f2cdcd"
+pink = "#f5c2e7"
+mauve = "#cba6f7"
+red = "#f38ba8"
+maroon = "#eba0ac"
+peach = "#fab387"
+yellow = "#f9e2af"
+green = "#a6e3a1"
+teal = "#94e2d5"
+sky = "#89dceb"
+sapphire = "#74c7ec"
+blue = "#89b4fa"
+lavender = "#b4befe"
+text = "#cdd6f4"
+subtext1 = "#bac2de"
+subtext0 = "#a6adc8"
+overlay2 = "#9399b2"
+overlay1 = "#7f849c"
+overlay0 = "#6c7086"
+surface2 = "#585b70"
+surface1 = "#45475a"
+surface0 = "#313244"
+base = "#1e1e2e"
+mantle = "#181825"
+crust = "#11111b"
