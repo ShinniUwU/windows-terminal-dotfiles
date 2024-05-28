@@ -1,6 +1,6 @@
 ## Windows Terminal Customization
 
-![Windows Terminal Look](https://cdn.discordapp.com/attachments/1215339142381183050/1226127211686268959/image.png?ex=6623a2f3&is=66112df3&hm=fd313e3d93e2bd3042cd63da24e3e1af9b28ba5d8f566b3abe6b2d0e4d72d8f1&)
+![Windows Terminal Look](preview/preview.png)
 
 This repository contains configurations and instructions to customize your Windows Terminal appearance.
 
