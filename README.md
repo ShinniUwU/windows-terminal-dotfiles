@@ -1,6 +1,6 @@
 ## Windows Terminal Customization
 
-![Windows Terminal Look](preview/preview.png)
+![Windows Terminal Look](preview/terminal.png)
 
 This repository contains configurations and instructions to customize your Windows Terminal appearance.
 
