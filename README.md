@@ -35,7 +35,7 @@ This repository contains configurations and instructions to customize your Windo
 
 3. Clone/Download this repository to your local machine.
 
-4. Navigate to the `.config` directory at `C:\Users\[name_of_pc]\.config` and create a `starship` folder if it doesn't exist. Place the configuration file from [here](https://github.com/ShinniUwU/windows-terminal-dotfiles/tree/main/.config/starship) into this folder.
+4. Navigate to the `.config` directory at `C:\Users\[name_of_pc]\.config\starship\starship.toml` and create a `starship` folder if it doesn't exist. Place the configuration file from [here](https://github.com/ShinniUwU/windows-terminal-dotfiles/tree/main/.config/starship) into this folder.
 
 5. Customize your fastfetch configuration by navigating to the `.config` directory and then into the `fastfetch` folder from [here](https://github.com/ShinniUwU/windows-terminal-dotfiles/tree/main/.config/fastfetch). Feel free to tweak the settings according to your preferences. Refer to [fastfetch presets](https://github.com/fastfetch-cli/fastfetch/tree/dev/presets) for inspiration.
 
