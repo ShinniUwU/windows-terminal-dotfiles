@@ -16,13 +16,13 @@ This repository contains configurations and instructions to customize your Windo
 
 1. Install PowerShell 7. Although the configuration can work with other versions, I recommend using PowerShell 7 as it doesn't display annoying text every time you open it.
    
-2. Run the following commands in your PowerShell terminal (Not tested):
+2. Run the following commands in your PowerShell terminal (Not tested, does not work with PowerShell 7, use PowerShell 5 instead):
     ```powershell
     Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser; Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression; scoop install git; scoop install fastfetch; scoop install starship
     ```
- 
-    Or, you can run the individual commands(safer):
 
+    Or, you can run the individual commands (safer):
+    
     ```powershell
     Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
     Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
@@ -43,6 +43,28 @@ This repository contains configurations and instructions to customize your Windo
 
 7. The JSON file contains my other settings; do not copy them into your JSON settings since it won't work.
    
+### Fixing Script Execution Errors
+
+If you encounter the error:
+
+```
+File C:\Users\[username]\OneDrive\Documents\PowerShell\Microsoft.PowerShell_profile.ps1 cannot be loaded. The file C:\Users\[username]\OneDrive\Documents\PowerShell\Microsoft.PowerShell_profile.ps1 is not digitally signed. You cannot run this script on the current system.
+```
+
+Follow these steps to resolve it:
+
+1. **Change the Execution Policy:**
+    ```powershell
+    Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser
+    ```
+
+2. **Unblock the File:**
+    ```powershell
+    Unblock-File -Path "C:\Users\[username]\OneDrive\Documents\PowerShell\Microsoft.PowerShell_profile.ps1"
+    ```
+
+3. **Run the Script Again:** After unblocking the file, you should be able to run the script without seeing the security warning each time.
+
 ### Getting Started
 
 With the installations and configurations done, you are now ready to use your customized Windows Terminal. Open the terminal and enjoy your personalized setup!
