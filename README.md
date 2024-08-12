@@ -62,8 +62,10 @@ This repository contains configurations and instructions to customize your Windo
 
 If you encounter the error:
 
-```
-File C:\Users\[username]\OneDrive\Documents\PowerShell\Microsoft.PowerShell_profile.ps1 cannot be loaded. The file C:\Users\[username]\OneDrive\Documents\PowerShell\Microsoft.PowerShell_profile.ps1 is not digitally signed. You cannot run this script on the current system.
+```powershell
+File C:\Users\[username]\OneDrive\Documents\PowerShell\Microsoft.PowerShell_profile.ps1 cannot be loaded.
+The file C:\Users\[username]\OneDrive\Documents\PowerShell\Microsoft.PowerShell_profile.ps1 is not digitally signed.
+You cannot run this script on the current system.
 ```
 
 Follow these steps to resolve it:
