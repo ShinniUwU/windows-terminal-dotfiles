@@ -42,7 +42,7 @@ This repository contains configurations and instructions to customize your Windo
 4. **Configure Windows Terminal:**
    - Open Windows Terminal.
    - Go to the settings (click on the down arrow in the terminal tab bar, then select "Settings").
-   - Under "Startup," set the default terminal application to "Windows Terminal."
+   - Under "Startup," set the default terminal application to "Powershell" not Windows Powershell 
    - Under "Defaults," click on "Appearance."
    - Change the font face to "Caskadiya Nerd Font Mono."
 
