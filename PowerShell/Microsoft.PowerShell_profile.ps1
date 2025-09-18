@@ -1,12 +1,31 @@
-# Clear the host
+# suppress loading message 
+$OriginalVerbosePreference = $VerbosePreference
+$VerbosePreference = 'SilentlyContinue'
+
+# clear the host
 Clear-Host
 
-# Run fastfetch (if installed)
-fastfetch
+function Run-IfInstalled {
+    param ([string]$Command)
+    if (Get-Command $Command -ErrorAction SilentlyContinue) {
+        try {
+            & $Command
+        } catch {
+            Write-Verbose ("Failed to run {0}: {1}" -f $Command, $_)
+        }
+    }
+}
 
-# Set the environment variable for the Starship configuration
+# runs Fetch based on what you have
+Run-IfInstalled hyfetch
+Run-IfInstalled fastfetch
+Run-IfInstalled neofetch
+
+# starship
 $ENV:STARSHIP_CONFIG = "$HOME\.config\starship\starship.toml"
 
-
-# Initialize Starship prompt
+# load Starship
 Invoke-Expression (&starship init powershell)
+
+# restore verbose preference
+$VerbosePreference = $OriginalVerbosePreference
